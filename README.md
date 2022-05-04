@@ -2,6 +2,14 @@
 
 This TODO APP is built with React.
 
+## My Build Process
+
+1. Created all the basic parts of a todo app in the `App.tsx` file.
+2. No style added, just the markup.
+3. Added no functionality to the app.
+4. After setting up the basic layout, I started taking out chunks of the code with related functionality and put them in their own component files.
+5. I started adding the functionality to the components but didn't connect them to each-other.
+
 ## Features
 
 - [ ] Add todo
