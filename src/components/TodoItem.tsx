@@ -1,3 +1,4 @@
+import { useLocalStorageContext } from '../hooks/useLocalStorageContext';
 import { Todo } from '../models/Todo';
 
 interface Props {
@@ -5,12 +6,14 @@ interface Props {
 }
 
 export default function TodoItem({ todo }: Props) {
+  const { dispatch } = useLocalStorageContext();
+
   const toggleComplete = () => {
     console.log('toggleComplete');
   };
 
-  const deleteTodo = () => {
-    console.log('deleteTodo');
+  const deleteTodo = (id: string) => {
+    dispatch({ type: 'REMOVE', payload: id });
   };
 
   return (
@@ -20,7 +23,7 @@ export default function TodoItem({ todo }: Props) {
       <p>{new Date(todo.timestamp).toLocaleDateString()}</p>
       {/* Section 4 - User Interaction */}
       <button onClick={toggleComplete}>Complete</button>
-      <button onClick={deleteTodo}>Delete</button>
+      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
     </>
   );
 }
