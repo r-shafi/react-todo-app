@@ -14,12 +14,13 @@ This TODO APP is built with React.
 8. Used Context and custom hook to make the todos available to all components, plus I can update the todos from any component within the context provider.
 9. I started adding functionality on todo items.
 10. I started updating application state on user interaction.
+11. Implemented data persistence using localStorage.
 
 ## Features
 
-- [ ] Add todo
-- [ ] Delete todo
-- [ ] Mark todo as complete/incomplete
+- [x] Add todo
+- [x] Delete todo
+- [x] Mark todo as complete/incomplete
 - [ ] Filter todos
 - [ ] Sort todos
 - [ ] Search todos
