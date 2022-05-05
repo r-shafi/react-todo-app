@@ -4,12 +4,11 @@ import { LocalStorageContextProvider } from './contexts/LocalStorageContext';
 
 function App() {
   return (
-    <div>
+    <div className="px-4 md:max-w-screen-sm mx-auto">
       <LocalStorageContextProvider>
         <h1>React Todo App</h1>
         <CreateTodo />
         <div>
-          <h2>Todo List</h2>
           <TodoList />
         </div>
       </LocalStorageContextProvider>
