@@ -9,6 +9,9 @@ This TODO APP is built with React.
 3. Added no functionality to the app.
 4. After setting up the basic layout, I started taking out chunks of the code with related functionality and put them in their own component files.
 5. I started adding the functionality to the components but didn't connect them to each-other.
+6. Enforced Type Safety.
+7. Added the ability to add new todos.
+8. Used Context and custom hook to make the todos available to all components, plus I can update the todos from any component within the context provider.
 
 ## Features
 
