@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import { Todo } from '../models/Todo';
 
 export const LocalStorageContext = createContext<any>(null);
 
@@ -6,17 +7,21 @@ interface Props {
   children: React.ReactNode;
 }
 
-function reducer(state: any, action: any) {
+function reducer(state: Todo[] | [], action: any) {
   switch (action.type) {
     case 'ADD':
       return [...state, action.payload];
+    case 'REMOVE':
+      return state.filter((item) => item.id !== action.payload);
     default:
       return state;
   }
 }
 
 export const LocalStorageContextProvider = ({ children }: Props) => {
-  const [state, dispatch] = useReducer(reducer, []);
+  const localData: Todo[] = JSON.parse(localStorage.getItem('todos')!) || [];
+
+  const [state, dispatch] = useReducer(reducer, localData);
 
   return (
     <LocalStorageContext.Provider value={{ state, dispatch }}>
