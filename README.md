@@ -15,6 +15,7 @@ This TODO APP is built with React.
 9. I started adding functionality on todo items.
 10. I started updating application state on user interaction.
 11. Implemented data persistence using localStorage.
+12. Added styles using tailwind
 
 ## Features
 
