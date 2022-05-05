@@ -20,11 +20,11 @@ export default function TodoItem({ todo }: Props) {
   };
 
   return (
-    <div className="flex justify-between border-b-2 border-b-slate-100 pb-2">
+    <div className="flex justify-between items-center border-b-2 border-b-slate-100 pb-2">
       <div>
         <h3
           className={
-            'text-lg font-bold uppercase ' +
+            'text-lg font-bold uppercase max-w-md ' +
             (todo.completed ? 'line-through text-slate-300' : '')
           }
         >
