@@ -20,19 +20,23 @@ export default function CreateTodo() {
           timestamp: Date.now(),
         },
       });
+
+      setTodo('');
     }
   };
 
   return (
-    <form onSubmit={(e) => createTodo(e)}>
-      <label>
-        New Todo:
-        <input
-          type="text"
-          value={todo}
-          onChange={(e) => setTodo(e.target.value)}
-        />
-      </label>
+    <form
+      onSubmit={(e) => createTodo(e)}
+      className="flex items-center gap-2 my-4"
+    >
+      <input
+        type="text"
+        placeholder="What Do You Need To Do?"
+        value={todo}
+        onChange={(e) => setTodo(e.target.value)}
+        className="flex-1"
+      />
       <button type="submit">Add New Todo</button>
     </form>
   );
