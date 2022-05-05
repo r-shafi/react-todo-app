@@ -12,6 +12,8 @@ This TODO APP is built with React.
 6. Enforced Type Safety.
 7. Added the ability to add new todos.
 8. Used Context and custom hook to make the todos available to all components, plus I can update the todos from any component within the context provider.
+9. I started adding functionality on todo items.
+10. I started updating application state on user interaction.
 
 ## Features
 
