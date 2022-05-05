@@ -13,6 +13,13 @@ function reducer(state: Todo[] | [], action: any) {
       return [...state, action.payload];
     case 'REMOVE':
       return state.filter((item) => item.id !== action.payload);
+    case 'TOGGLE_COMPLETE':
+      return state.map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, completed: !item.completed };
+        }
+        return item;
+      });
     default:
       return state;
   }
