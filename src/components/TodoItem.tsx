@@ -8,8 +8,8 @@ interface Props {
 export default function TodoItem({ todo }: Props) {
   const { dispatch } = useLocalStorageContext();
 
-  const toggleComplete = () => {
-    console.log('toggleComplete');
+  const toggleComplete = (id: string) => {
+    dispatch({ type: 'TOGGLE_COMPLETE', payload: id });
   };
 
   const deleteTodo = (id: string) => {
@@ -18,11 +18,13 @@ export default function TodoItem({ todo }: Props) {
 
   return (
     <>
-      <h3>{todo.title}</h3>
+      <h3>
+        {todo.title} {`${todo.completed ? '(COMPLETED)' : ''}`}
+      </h3>
       <p>{new Date(todo.timestamp).toLocaleTimeString()}</p>
       <p>{new Date(todo.timestamp).toLocaleDateString()}</p>
       {/* Section 4 - User Interaction */}
-      <button onClick={toggleComplete}>Complete</button>
+      <button onClick={() => toggleComplete(todo.id)}>Complete</button>
       <button onClick={() => deleteTodo(todo.id)}>Delete</button>
     </>
   );
