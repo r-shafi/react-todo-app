@@ -8,21 +8,29 @@ interface Props {
 }
 
 function reducer(state: Todo[] | [], action: any) {
+  let NEW_STATE: Todo[] = [];
+
   switch (action.type) {
     case 'ADD':
-      return [...state, action.payload];
+      NEW_STATE = [...state, action.payload];
+      break;
     case 'REMOVE':
-      return state.filter((item) => item.id !== action.payload);
+      NEW_STATE = state.filter((item) => item.id !== action.payload);
+      break;
     case 'TOGGLE_COMPLETE':
-      return state.map((item) => {
+      NEW_STATE = state.map((item) => {
         if (item.id === action.payload) {
           return { ...item, completed: !item.completed };
         }
         return item;
       });
+      break;
     default:
       return state;
   }
+
+  localStorage.setItem('todos', JSON.stringify(NEW_STATE));
+  return NEW_STATE;
 }
 
 export const LocalStorageContextProvider = ({ children }: Props) => {
