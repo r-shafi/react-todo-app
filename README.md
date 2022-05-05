@@ -26,3 +26,4 @@ This TODO APP is built with React.
 - [ ] Search todos
 - [ ] Export todo list
 - [ ] Import todo list
+- [ ] Snackbar Notification
