@@ -1,5 +1,7 @@
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { useLocalStorageContext } from '../hooks/useLocalStorageContext';
 import CreateTodo from './CreateTodo';
+import SearchTodo from './SearchTodo';
 
 const Links = [
   {
@@ -17,6 +19,8 @@ const Links = [
 ];
 
 export default function Tabs() {
+  const { dispatch } = useLocalStorageContext();
+
   return (
     <BrowserRouter>
       <nav className="grid grid-cols-3 gap-2 text-center">
@@ -28,6 +32,13 @@ export default function Tabs() {
               (isActive ? 'font-bold bg-slate-200' : '')
             }
             key={label}
+            onClick={() =>
+              dispatch({
+                type: label.includes('Completed')
+                  ? 'COMPLETED_TODOS'
+                  : 'REFRESH',
+              })
+            }
           >
             {label}
           </NavLink>
@@ -36,8 +47,8 @@ export default function Tabs() {
 
       <Routes>
         <Route path="/" element={<CreateTodo />} />
-        <Route path="search" element={<h1>Search</h1>} />
-        <Route path="completed" element={<h1>Completed</h1>} />
+        <Route path="search" element={<SearchTodo />} />
+        <Route path="completed" element={<></>} />
       </Routes>
     </BrowserRouter>
   );
