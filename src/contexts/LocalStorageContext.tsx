@@ -7,8 +7,11 @@ interface Props {
   children: React.ReactNode;
 }
 
+let NEW_STATE: Todo[] = [];
+let TEMP_STATE: Todo[] = [];
+
 function reducer(state: Todo[] | [], action: any) {
-  let NEW_STATE: Todo[] = [];
+  let temp = false;
 
   switch (action.type) {
     case 'ADD':
@@ -25,12 +28,40 @@ function reducer(state: Todo[] | [], action: any) {
         return item;
       });
       break;
+    case 'SEARCH_TODO':
+      temp = true;
+
+      if (!NEW_STATE.length) {
+        NEW_STATE = JSON.parse(localStorage.getItem('todos')!) || [];
+      }
+
+      if (!action.payload) {
+        TEMP_STATE = NEW_STATE;
+      } else {
+        TEMP_STATE = NEW_STATE.filter((item) =>
+          item.title.toLowerCase().includes(action.payload.toLowerCase())
+        );
+      }
+      break;
+    case 'REFRESH':
+      temp = false;
+      if (!NEW_STATE.length) {
+        NEW_STATE = JSON.parse(localStorage.getItem('todos')!) || [];
+      }
+      break;
+    case 'COMPLETED_TODOS':
+      temp = true;
+      TEMP_STATE = NEW_STATE.filter((item) => item.completed);
+      break;
     default:
       return state;
   }
 
-  localStorage.setItem('todos', JSON.stringify(NEW_STATE));
-  return NEW_STATE;
+  if (!temp) {
+    localStorage.setItem('todos', JSON.stringify(NEW_STATE));
+  }
+
+  return temp ? TEMP_STATE : NEW_STATE;
 }
 
 export const LocalStorageContextProvider = ({ children }: Props) => {
