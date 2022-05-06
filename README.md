@@ -19,15 +19,13 @@ This TODO APP is built with React.
 13. Add react router dom for routing between search, filter and creating todos.
 14. Added search and filter functionality.
 15. State became very complex, need to refactor.
+16. Fixed State issues.
 
 ## Features
 
 - [x] Add todo
 - [x] Delete todo
 - [x] Mark todo as complete/incomplete
-- [ ] Filter todos
-- [ ] Sort todos
-- [ ] Search todos
-- [ ] Export todo list
-- [ ] Import todo list
+- [x] Filter todos
+- [x] Search todos
 - [ ] Snackbar Notification
