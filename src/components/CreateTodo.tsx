@@ -28,7 +28,7 @@ export default function CreateTodo() {
   return (
     <form
       onSubmit={(e) => createTodo(e)}
-      className="flex items-center gap-2 my-4"
+      className="flex flex-col md:flex-row items-center gap-2 my-4"
     >
       <input
         type="text"
