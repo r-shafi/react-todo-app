@@ -16,6 +16,7 @@ This TODO APP is built with React.
 10. I started updating application state on user interaction.
 11. Implemented data persistence using localStorage.
 12. Added styles using tailwind
+13. Add react router dom for routing between search, filter and creating todos.
 
 ## Features
 
